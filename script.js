@@ -1,3 +1,4 @@
+// ...existing code...
 // Dados mockados (substitua por backend quando disponível)
 const sorteios = [
   {
@@ -96,33 +97,58 @@ function setupVerOutros() {
   btn.addEventListener('click', () => {
     winnersShown = Math.min(winnersShown + 1, ganhadores.length);
     renderGanhadores(winnersShown);
+    if (winnersShown >= ganhadores.length) {
+      btn.disabled = true;
+      btn.textContent = 'Todos exibidos';
+    }
   });
 }
 
 // CTA principal
 function setupCTA() {
   const cta = document.getElementById('ctaParticipar');
+  if (!cta) return;
   cta.addEventListener('click', () => {
-    window.scrollTo({ top: document.querySelector('.sorteios').offsetTop - 10, behavior: 'smooth' });
+    // comportamento simples: abrir modal ou redirecionar.
+    // Aqui apenas abre uma nova aba para página de compra (substitua pela rota real).
+    window.open('#', '_self');
   });
 }
 
 // Countdown até 18h local
 function startCountdown() {
+  const el = document.getElementById('countdown');
+  if (!el) return;
+
+  function getNext18() {
+    const now = new Date();
+    const next = new Date(now);
+    next.setHours(18, 0, 0, 0);
+    if (now >= next) next.setDate(next.getDate() + 1);
+    return next;
+  }
+
+  let target = getNext18();
+
+  function formatTime(ms) {
+    const totalSeconds = Math.floor(ms / 1000);
+    const hours = Math.floor(totalSeconds / 3600);
+    const minutes = Math.floor((totalSeconds % 3600) / 60);
+    const seconds = totalSeconds % 60;
+    return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+  }
+
   function update() {
     const now = new Date();
-    const target = new Date();
-    target.setHours(18, 0, 0, 0);
-    if (target < now) target.setDate(target.getDate() + 1);
-    const diff = target - now;
-
-    const h = Math.floor(diff / 3_600_000);
-    const m = Math.floor((diff % 3_600_000) / 60_000);
-    const s = Math.floor((diff % 60_000) / 1000);
-    const el = document.getElementById('countdown');
-    if (el) el.textContent =
-      `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+    let diff = target - now;
+    if (diff <= 0) {
+      // Recalcula próximo 18h e exibe 00:00:00 brevemente antes de recontar
+      target = getNext18();
+      diff = Math.max(0, target - now);
+    }
+    el.textContent = formatTime(diff);
   }
+
   update();
   setInterval(update, 1000);
 }
@@ -134,3 +160,4 @@ document.addEventListener('DOMContentLoaded', () => {
   setupCTA();
   startCountdown();
 });
+// ...existing code...
