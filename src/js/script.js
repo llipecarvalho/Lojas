@@ -153,11 +153,21 @@ function startCountdown() {
   setInterval(update, 1000);
 }
 
+// Hamburger menu
+function setupHamburger() {
+  const hamburger = document.getElementById('hamburger');
+  const nav = document.getElementById('topNav');
+  hamburger.addEventListener('click', () => {
+    nav.classList.toggle('open');
+  });
+}
+
 // Inicialização
 document.addEventListener('DOMContentLoaded', () => {
   renderSorteios();
   setupVerOutros();
   setupCTA();
   startCountdown();
+  setupHamburger();
 });
 // ...existing code...

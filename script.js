@@ -1,5 +1,3 @@
-// ...existing code...
-// Dados mockados (substitua por backend quando disponível)
 const sorteios = [
   {
     titulo: "Sorteio em 02/2024",
