@@ -107,11 +107,18 @@ function setupVerOutros() {
 // CTA principal
 function setupCTA() {
   const cta = document.getElementById('ctaParticipar');
+  const modal = document.getElementById('participarModal');
+  const close = document.getElementById('modalClose');
   if (!cta) return;
-  cta.addEventListener('click', () => {
-    // comportamento simples: abrir modal ou redirecionar.
-    // Aqui apenas abre uma nova aba para página de compra (substitua pela rota real).
-    window.open('#', '_self');
+  cta.addEventListener('click', (e) => {
+    e.preventDefault();
+    modal.classList.add('show');
+  });
+  close.addEventListener('click', () => {
+    modal.classList.remove('show');
+  });
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) modal.classList.remove('show');
   });
 }
 
@@ -147,6 +154,9 @@ function startCountdown() {
       diff = Math.max(0, target - now);
     }
     el.textContent = formatTime(diff);
+    el.classList.remove('fadeIn');
+    void el.offsetWidth; // trigger reflow
+    el.classList.add('fadeIn');
   }
 
   update();
@@ -162,6 +172,16 @@ function setupHamburger() {
   });
 }
 
+// Theme toggle
+function setupThemeToggle() {
+  const toggle = document.getElementById('themeToggle');
+  const body = document.body;
+  toggle.addEventListener('click', () => {
+    body.classList.toggle('light-theme');
+    toggle.textContent = body.classList.contains('light-theme') ? '☀️' : '🌙';
+  });
+}
+
 // Inicialização
 document.addEventListener('DOMContentLoaded', () => {
   renderSorteios();
@@ -169,5 +189,6 @@ document.addEventListener('DOMContentLoaded', () => {
   setupCTA();
   startCountdown();
   setupHamburger();
+  setupThemeToggle();
 });
 // ...existing code...
