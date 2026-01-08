@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ELEVC • Sorteios</title>
+  <meta name="description" content="Participe dos sorteios da ELEVC, confira prêmios e acompanhe ganhadores em tempo real. Sorteios diários a partir de R$ 0,99." />
+  <meta name="keywords" content="sorteios, loteria, prêmios, ELEVC, ganhadores, transparência" />
+  <meta property="og:title" content="ELEVC • Sorteios" />
+  <meta property="og:description" content="Participe dos sorteios da ELEVC, confira prêmios e acompanhe ganhadores em tempo real." />
+  <meta property="og:image" content="src/assets/images/Elevlogo.svg" />
+  <meta property="og:url" content="https://ele.vc" />
+  <meta property="og:type" content="website" />
+  <link rel="preload" href="src/css/style.css" as="style" />
+  <link rel="preload" href="src/js/script.js" as="script" />
+  <link rel="stylesheet" href="src/css/style.css" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Lottery",
+    "name": "ELEVC Sorteios",
+    "description": "Plataforma de sorteios transparentes e legais da ELEVC",
+    "url": "https://www.elev-c.com",
+    "organizer": {
+      "@type": "Organization",
+      "name": "ELEVC"
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "0.99",
+      "priceCurrency": "BRL"
+    }
+  }
+  </script>
+</head>
+<body>
+  <div class="wrap">
+    <!-- Topbar -->
+    <header class="topbar">
+      <div class="brand">
+        <div class="logo"><img src="src/assets/images/Elevlogo.svg" alt="Logo ELEVC" loading="lazy" /></div>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Abrir menu de navegação">☰</button>
+      <nav class="top-actions" id="topNav" aria-label="Menu principal">
+        <button class="ghost" aria-label="Acessar área do grupo">Grupo</button>
+        <button class="ghost" aria-label="Acessar área VIP">VIP</button>
+        <button class="primary" aria-label="Entrar na conta">Entrar</button>
+        <button id="themeToggle" aria-label="Alternar tema">🌙</button>
+      </nav>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero card" aria-labelledby="hero-title">
+      <div class="hero-content">
+        <h2 id="hero-title">A sua chance de ganhar um grande prêmio chegou!</h2>
+        <p>Participe dos nossos sorteios, confira prêmios e acompanhe os ganhadores em tempo real.</p>
+        <div class="hero-cta">
+          <button class="cta" id="ctaParticipar" aria-label="Participar de um sorteio agora">Participar agora</button>
+          <div class="badges">
+            <span class="badge" data-tooltip="Sorteio realizado todos os dias às 18h no horário local">Sorteio diário às 18h</span>
+            <span class="badge" data-tooltip="Títulos disponíveis a partir de R$ 0,99">Títulos a partir de R$ 0,99</span>
+          </div>
+        </div>
+        <div class="hero-kpis">
+          <div class="kpi">
+            <div class="label">Último prêmio</div>
+            <div class="value">R$ 50.000,00</div>
+          </div>
+          <div class="kpi">
+            <div class="label">Próximo sorteio</div>
+            <div class="value" id="countdown" aria-live="polite">00:00:00</div>
+          </div>
+          <div class="kpi">
+            <div class="label">Participantes hoje</div>
+            <div class="value">12.438</div>
+          </div>
+          <div class="kpi">
+            <div class="label">Títulos vendidos</div>
+            <div class="value">89%</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Grid principal -->
+    <main class="grid">
+      <!-- Sorteios ativos -->
+      <article class="card sorteios">
+        <div class="section-head">
+          <h3>Participe de nossos sorteios</h3>
+          <p class="muted">Você também pode ganhar!</p>
+        </div>
+        <div class="sorteios-list" id="sorteiosList" aria-label="Lista de sorteios ativos"></div>
+      </article>
+
+      <!-- Últimos ganhadores -->
+      <article class="card ganhadores">
+        <div class="section-head">
+          <h3>Últimos ganhadores</h3>
+          <p class="muted">Verifique o número do seu bilhete para ver se você é um ganhador.</p>
+        </div>
+        <div class="winners" id="winnersList" aria-label="Lista de últimos ganhadores"></div>
+        <div class="section-actions">
+          <button class="ghost" id="btnVerOutros" aria-label="Ver mais ganhadores">Ver outros</button>
+        </div>
+      </article>
+
+      <!-- Transparência e conformidade -->
+      <article class="card legal">
+        <div class="section-head">
+          <h3>Transparência e conformidade legal</h3>
+        </div>
+        <div class="legal-grid">
+          <div class="legal-item">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ícone de auditoria independente">
+              <path d="M12 2L3 7v10c0 5.55 3.84 9.74 9 11 5.16-1.26 9-5.45 9-11V7l-9-5z" stroke="var(--accent)" stroke-width="2"/>
+              <path d="M9 12l2 2 4-4" stroke="var(--accent)" stroke-width="2"/>
+            </svg>
+            <p class="muted">Auditoria independente e publicação de resultados.</p>
+          </div>
+          <div class="legal-item">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ícone de regulamento público">
+              <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" stroke="var(--accent)" stroke-width="2"/>
+              <path d="M14 2v6h6" stroke="var(--accent)" stroke-width="2"/>
+              <path d="M16 13H8" stroke="var(--accent)" stroke-width="2"/>
+              <path d="M16 17H8" stroke="var(--accent)" stroke-width="2"/>
+              <path d="M10 9H8" stroke="var(--accent)" stroke-width="2"/>
+            </svg>
+            <p class="muted">Regulamento público e critérios de elegibilidade.</p>
+          </div>
+          <div class="legal-item">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ícone de relatórios periódicos">
+              <path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2z" stroke="var(--accent)" stroke-width="2"/>
+              <path d="M15 19v-6a2 2 0 00-2-2H13a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2z" stroke="var(--accent)" stroke-width="2"/>
+              <path d="M21 19v-6a2 2 0 00-2-2h-2a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2z" stroke="var(--accent)" stroke-width="2"/>
+              <path d="M3 7h18" stroke="var(--accent)" stroke-width="2"/>
+            </svg>
+            <p class="muted">Relatórios periódicos e registro de prêmios.</p>
+          </div>
+        </div>
+
+        <div class="legal-columns">
+          <div class="legal-block">
+            <h4>Legalidade</h4>
+            <p>Operação em conformidade com legislação aplicável, com regras claras e fiscalização.</p>
+            <button class="ghost" aria-label="Saiba mais sobre legalidade">Saiba mais</button>
+          </div>
+          <div class="legal-block">
+            <h4>Filantropia</h4>
+            <p>Parte da arrecadação é destinada a projetos sociais e filantrópicos.</p>
+            <button class="ghost" aria-label="Saiba mais sobre filantropia">Saiba mais</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Perfil / Embaixadora -->
+      <article class="card perfil">
+        <div class="perfil-grid">
+          <div class="perfil-photo">
+            <div class="photo-placeholder" role="img" aria-label="Foto da embaixadora Fulana Sousa">Sua foto aqui</div>
+          </div>
+          <div class="perfil-content">
+            <h3>Quem é Fulana Sousa</h3>
+            <p>Influenciadora e embaixadora, compartilha bastidores dos sorteios e a alegria dos ganhadores.</p>
+            <p>Transparência, proximidade e comunidade são os pilares dessa iniciativa.</p>
+            <button class="primary" id="btnInstagram" aria-label="Acessar Instagram de Fulana Sousa">Acesse meu Instagram</button>
+          </div>
+        </div>
+      </article>
+    </main>
+
+    <!-- Rodapé -->
+    <footer class="footer" role="contentinfo">
+      <div class="footer-links">
+        <a href="#" aria-label="Ver regulamento">Regulamento</a>
+        <a href="#" aria-label="Ver política de privacidade">Privacidade</a>
+        <a href="#" aria-label="Ver termos de uso">Termos</a>
+        <a href="#" aria-label="Acessar suporte">Suporte</a>
+      </div>
+      <div class="copy">Todos os direitos reservados ELEVC</div>
+    </footer>
+  </div>
+
+  <div class="modal" id="participarModal">
+    <div class="modal-content">
+      <button class="modal-close" id="modalClose">&times;</button>
+      <h3>Participar do Sorteio</h3>
+      <p>Escolha um título e participe agora!</p>
+      <button class="primary">Comprar Título</button>
+    </div>
+  </div>
+
+  <script src="src/js/script.js"></script>
+</body>
+</html>

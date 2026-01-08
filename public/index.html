@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ELEVC • Sorteios</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="wrap">
+    <!-- Topbar -->
+    <header class="topbar">
+      <div class="brand">
+        <div class="logo"><img src="images/Elevlogo.svg" alt="Logo ELEVC"></div>
+      </div>
+      <nav class="top-actions">
+        <button class="ghost">Grupo</button>
+        <button class="ghost">VIP</button>
+        <button class="primary">Entrar</button>
+      </nav>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero card">
+      <div class="hero-content">
+        <h2>A sua chance de ganhar um grande prêmio chegou!</h2>
+        <p>Participe dos nossos sorteios, confira prêmios e acompanhe os ganhadores em tempo real.</p>
+        <div class="hero-cta">
+          <button class="cta" id="ctaParticipar">Participar agora</button>
+          <div class="badges">
+            <span class="badge">Sorteio diário às 18h</span>
+            <span class="badge">Títulos a partir de R$ 0,99</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-kpis">
+        <div class="kpi">
+          <div class="label">Último prêmio</div>
+          <div class="value">R$ 50.000,00</div>
+        </div>
+        <div class="kpi">
+          <div class="label">Próximo sorteio</div>
+          <div class="value" id="countdown">00:00:00</div>
+        </div>
+        <div class="kpi">
+          <div class="label">Participantes hoje</div>
+          <div class="value">12.438</div>
+        </div>
+        <div class="kpi">
+          <div class="label">Títulos vendidos</div>
+          <div class="value">89%</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Grid principal -->
+    <main class="grid">
+      <!-- Sorteios ativos -->
+      <section class="card sorteios">
+        <div class="section-head">
+          <h3>Participe de nossos sorteios</h3>
+          <p class="muted">Você também pode ganhar!</p>
+        </div>
+        <div class="sorteios-list" id="sorteiosList"></div>
+      </section>
+
+      <!-- Últimos ganhadores -->
+      <section class="card ganhadores">
+        <div class="section-head">
+          <h3>Últimos ganhadores</h3>
+          <p class="muted">Verifique o número do seu bilhete para ver se você é um ganhador.</p>
+        </div>
+        <div class="winners" id="winnersList"></div>
+        <div class="section-actions">
+          <button class="ghost" id="btnVerOutros">Ver outros</button>
+        </div>
+      </section>
+
+      <!-- Transparência e conformidade -->
+      <section class="card legal">
+        <div class="section-head">
+          <h3>Transparência e conformidade legal</h3>
+        </div>
+        <div class="legal-grid">
+          <div class="legal-item">
+            <div class="placeholder"></div>
+            <p class="muted">Auditoria independente e publicação de resultados.</p>
+          </div>
+          <div class="legal-item">
+            <div class="placeholder"></div>
+            <p class="muted">Regulamento público e critérios de elegibilidade.</p>
+          </div>
+          <div class="legal-item">
+            <div class="placeholder"></div>
+            <p class="muted">Relatórios periódicos e registro de prêmios.</p>
+          </div>
+        </div>
+
+        <div class="legal-columns">
+          <div class="legal-block">
+            <h4>Legalidade</h4>
+            <p>Operação em conformidade com legislação aplicável, com regras claras e fiscalização.</p>
+            <button class="ghost">Saiba mais</button>
+          </div>
+          <div class="legal-block">
+            <h4>Filantropia</h4>
+            <p>Parte da arrecadação é destinada a projetos sociais e filantrópicos.</p>
+            <button class="ghost">Saiba mais</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Perfil / Embaixadora -->
+      <section class="card perfil">
+        <div class="perfil-grid">
+          <div class="perfil-photo">
+            <div class="photo-placeholder">Sua foto aqui</div>
+          </div>
+          <div class="perfil-content">
+            <h3>Quem é Fulana Sousa</h3>
+            <p>Influenciadora e embaixadora, compartilha bastidores dos sorteios e a alegria dos ganhadores.</p>
+            <p>Transparência, proximidade e comunidade são os pilares dessa iniciativa.</p>
+            <button class="primary" id="btnInstagram">Acesse meu Instagram</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Rodapé -->
+    <footer class="footer">
+      <div class="footer-links">
+        <a href="#">Regulamento</a>
+        <a href="#">Privacidade</a>
+        <a href="#">Termos</a>
+        <a href="#">Suporte</a>
+      </div>
+      <div class="copy">Todos os direitos reservados ELEVC</div>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

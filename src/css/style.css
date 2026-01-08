@@ -1,0 +1,325 @@
+:root {
+  --bg: #0f1115;
+  --surface: #14171f;
+  --surface-2: #1a1f29;
+  --text: #e7ebf3;
+  --muted: #a8b0bf;
+  --primary: #ff7a1a;
+  --primary-900: #b15410;
+  --secondary: #007bff;
+  --accent: #39d98a;
+  --warning: #ffd166;
+  --radius: 14px;
+  --radius-sm: 10px;
+  --shadow: 0 10px 24px rgba(0,0,0,0.35);
+  --max-w: 1160px;
+  --gap: 16px;
+}
+
+.light-theme {
+  --bg: #ffffff;
+  --surface: #f8f9fa;
+  --surface-2: #e9ecef;
+  --text: #212529;
+  --muted: #6c757d;
+}
+
+* { box-sizing: border-box }
+html, body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  margin: 0; padding: 0;
+}
+
+.wrap {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--gap);
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 16px;
+}
+
+/* Topbar */
+.topbar {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+}
+.brand {
+  display: flex; align-items: center; gap: 12px;
+}
+.logo {
+  width: 190px; height: auto;
+  padding: 15px;
+  box-shadow: var(--shadow);
+}
+.logo img {
+  width: 190px;
+  height: auto;
+  object-fit: contain;
+}
+.brand-text h1 { margin: 0; font-size: 18px }
+.subtitle { color: var(--muted); font-size: 12px }
+.top-actions { display: flex; gap: 8px; align-items: center }
+.hamburger { display: none; }
+
+/* Buttons */
+button { cursor: pointer; transition: all 0.3s ease; }
+button:focus { outline: 2px solid var(--primary); outline-offset: 2px; }
+.ghost {
+  background: var(--surface-2); color: var(--text);
+  border: 1px solid #ffffff15; border-radius: var(--radius-sm);
+  padding: 20px 20px;
+}
+.primary {
+  background: var(--primary); color: #161616;
+  border: 1px solid #00000022; border-radius: var(--radius-sm);
+  padding: 10px 14px; font-weight: 700;
+}
+.primary:hover { filter: brightness(1.06) }
+.ghost:hover { filter: brightness(1.06); background: var(--secondary); }
+
+/* Card */
+.card {
+  background: var(--surface);
+  border: 1px solid #ffffff10;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 16px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.5); }
+.section-head h3 { margin: 0 0 6px }
+.muted { color: var(--muted) }
+
+/* Hero */
+.hero {
+  display: grid; gap: 4px;
+  background: radial-gradient(1200px 400px at 10% -20%, #1a1f29 0%, #0f1115 65%);
+  padding: 4px;
+}
+.hero-content h2 { margin: 0 0 4px; font-size: 22px }
+.hero-content p { color: var(--muted); margin: 0 0 6px }
+.hero-cta { display: grid; gap: 4px; margin-bottom: 6px }
+.cta {
+  background: var(--primary); color: #161616;
+  padding: 14px 14px; border-radius: var(--radius-sm);
+  margin: 20px 0 20px 0;
+  border: none; font-weight: 700; transition: all 0.3s ease;
+}
+.cta:hover { transform: scale(1.05); }
+.badges { display: flex; gap: 8px; flex-wrap: wrap }
+.badge {
+  background: #ffffff12; color: var(--muted);
+  padding: 6px 10px; border-radius: 999px; font-size: 12px;
+  position: relative;
+}
+.badge:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--surface-2);
+  color: var(--text);
+  padding: 5px 10px;
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  white-space: nowrap;
+  opacity: 1;
+  pointer-events: none;
+}
+.hero-kpis {
+  display: grid; grid-template-columns: 1fr; gap: 2px; margin-top: 4px;
+}
+.kpi {
+  background: var(--surface-2);
+  border: 1px solid #ffffff10;
+  border-radius: var(--radius-sm);
+  padding: 6px;
+  text-align: center;
+}
+.kpi .label { color: var(--muted); font-size: 11px }
+.kpi .value { font-weight: 700; font-size: 20px }
+.kpi .value#countdown { letter-spacing: 1px; animation: fadeIn 1s ease-in-out; }
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Grid principal */
+.grid { display: grid; gap: var(--gap) }
+
+/* Sorteios ativos */
+.sorteios-list { display: grid; gap: 12px }
+.sorteio-item {
+  display: grid; grid-template-columns: 1fr auto; gap: 12px; align-items: center;
+  background: var(--surface-2);
+  border: 1px solid #ffffff10;
+  border-radius: var(--radius-sm);
+  padding: 12px;
+}
+.sorteio-meta { display: grid; gap: 6px }
+.sorteio-title { font-weight: 700 }
+.sorteio-info { color: var(--muted); font-size: 14px }
+.sorteio-actions { display: grid; gap: 8px; align-items: end; justify-items: end }
+.price {
+  background: #ffffff10; border: 1px solid #ffffff12;
+  padding: 6px 10px; border-radius: 999px; font-size: 12px;
+  color: var(--warning); font-weight: 700;
+}
+
+/* Últimos ganhadores */
+.winners { display: grid; gap: 10px }
+.winner-item {
+  display: grid; grid-template-columns: 1fr auto; gap: 8px; align-items: center;
+  background: var(--surface-2);
+  border: 1px solid #ffffff10;
+  border-radius: var(--radius-sm);
+  padding: 10px;
+}
+.winner-name { font-weight: 700 }
+.winner-info { color: var(--muted); font-size: 14px }
+.winner-prize { color: var(--accent); font-weight: 700 }
+.winner-actions { display: flex; gap: 8px; align-items: center }
+.reaction { background: var(--primary); color: #161616; border: none; border-radius: var(--radius-sm); padding: 8px 10px; font-weight: 700 }
+
+/* Legalidade / Filantropia */
+.legal-grid {
+  display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 12px;
+}
+.placeholder {
+  aspect-ratio: 16 / 9;
+  background: #0b0e13; border: 1px dashed #ffffff22; border-radius: var(--radius-sm);
+}
+.legal-columns {
+  display: grid; grid-template-columns: 1fr; gap: 12px;
+}
+.legal-block {
+  background: var(--surface-2);
+  border: 1px solid #ffffff10; border-radius: var(--radius-sm); padding: 12px;
+}
+.legal-block h4 { margin: 0 0 6px }
+.legal-block p { margin: 0 0 10px; color: var(--muted) }
+
+/* Perfil */
+.perfil-grid {
+  display: grid; grid-template-columns: 1fr; gap: 12px;
+}
+.photo-placeholder {
+  display: grid; place-items: center;
+  background: #0b0e13; border: 1px dashed #ffffff22;
+  border-radius: var(--radius); color: var(--muted);
+  min-height: 160px; font-weight: 600;
+}
+.perfil-content h3 { margin: 0 0 6px }
+.perfil-content p { margin: 0 0 10px; color: var(--muted) }
+
+/* Footer */
+.footer {
+  display: grid; gap: 8px; padding: 16px;
+  color: var(--muted); border-top: 1px solid #ffffff10;
+}
+.footer-links { display: flex; gap: 12px; flex-wrap: wrap }
+.footer a { color: var(--muted); text-decoration: none; font-size: 14px }
+.footer a:hover { color: var(--text) }
+.modal {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.8);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+}
+.modal.show { display: flex; }
+.modal-content {
+  background: var(--surface);
+  padding: 20px;
+  border-radius: var(--radius);
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+}
+.modal-close {
+  position: absolute;
+  top: 10px; right: 10px;
+  background: none;
+  border: none;
+  color: var(--text);
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* Responsivo */
+@media (max-width: 699px) {
+  .logo {
+    width: 120px;
+    height: auto;
+  }
+  .logo img {
+    width: 120px;
+  }
+  .hamburger {
+    display: block;
+    background: none;
+    border: none;
+    color: var(--text);
+    font-size: 24px;
+    cursor: pointer;
+  }
+  .top-actions {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: var(--surface);
+    border: 1px solid #ffffff10;
+    border-radius: var(--radius-sm);
+    padding: 16px;
+    flex-direction: column;
+    gap: 12px;
+    box-shadow: var(--shadow);
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+  }
+  .top-actions.open {
+    display: flex;
+    transform: translateX(0);
+  }
+  .topbar {
+    position: relative;
+  }
+  .grid {
+    grid-template-areas:
+      "sorteios"
+      "perfil"
+      "ganhadores"
+      "legal";
+  }
+  .sorteios { grid-area: sorteios }
+  .perfil { grid-area: perfil }
+  .ganhadores { grid-area: ganhadores }
+  .legal { grid-area: legal }
+}
+
+@media (min-width: 900px) {
+  .hero {
+    /* grid-template-columns: 1.6fr 1fr; align-items: center; */
+  }
+  .grid {
+    grid-template-columns: 2fr 1.2fr;
+    grid-template-areas:
+      "sorteios ganhadores"
+      "legal perfil";
+  }
+  .sorteios { grid-area: sorteios }
+  .ganhadores { grid-area: ganhadores }
+  .legal { grid-area: legal }
+  .perfil { grid-area: perfil }
+  .legal-columns { grid-template-columns: 1fr 1fr }
+  .perfil-grid { grid-template-columns: 1fr 1.2fr; align-items: center }
+}
